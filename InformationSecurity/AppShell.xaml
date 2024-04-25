@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="InformationSecurity.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:InformationSecurity"
+    Shell.FlyoutBehavior="Disabled"
+    Title="InformationSecurity">
+
+    <TabBar>
+        <Tab Title="Шифр Цезаря">
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:CaesarCipherInterface}"
+                Route="CaesarCipherInterface"/>
+        </Tab>
+        <Tab Title="Таблица Тритемиуса">
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:TrithemiusTableInterface}"
+                Route="TrithemiusTableInterface"/>
+        </Tab>
+        <Tab Title="Виженер-шифрование">
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:VigenereEncryptionInterface}"
+                Route="VigenereEncryptionInterface"/>
+        </Tab>
+
+
+    </TabBar>
+
+</Shell>
