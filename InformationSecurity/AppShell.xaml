@@ -18,6 +18,11 @@
                 ContentTemplate="{DataTemplate local:TrithemiusTableInterface}"
                 Route="TrithemiusTableInterface"/>
         </Tab>
+        <Tab Title="Побитовое шифрование">
+            <ShellContent 
+        ContentTemplate="{DataTemplate local:BitEncryptionInterface}"
+        Route="BitEncryptionInterface"/>
+        </Tab>
         <Tab Title="Виженер-шифрование">
             <ShellContent 
                 ContentTemplate="{DataTemplate local:VigenereEncryptionInterface}"

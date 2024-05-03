@@ -69,6 +69,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="BitEncryptionInterface.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="CaesarCipherInterface.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
