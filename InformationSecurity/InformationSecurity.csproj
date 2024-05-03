@@ -75,6 +75,9 @@
 	  <MauiXaml Update="CaesarCipherInterface.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="EuclideanAlgorithmInterface.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="TrithemiusTableInterface.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

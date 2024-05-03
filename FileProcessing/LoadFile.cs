@@ -1,66 +1,65 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace FileProcessing
+namespace FileProcessing;
+
+public class LoadFile
 {
-    public class LoadFile
+    public string FirstLine { get; set; }
+
+    public async Task<FileResult> GetFile()
     {
-        public string FirstLine { get; set; }
-
-        public async Task<FileResult> GetFile()
-        {
-            var customFileType = new FilePickerFileType(
-                new Dictionary<DevicePlatform, IEnumerable<string>>
-                {
-                    { DevicePlatform.iOS, new[] { ".txt" } },
-                    { DevicePlatform.Android, new[] { ".txt" } },
-                    { DevicePlatform.WinUI, new[] { ".txt" } },
-                    { DevicePlatform.Tizen, new[] { ".txt" } },
-                    { DevicePlatform.macOS, new[] { ".txt" } },
-                });
-
-            PickOptions options = new()
+        var customFileType = new FilePickerFileType(
+            new Dictionary<DevicePlatform, IEnumerable<string>>
             {
-                PickerTitle = "Выберите файл с расширением txt",
-                FileTypes = customFileType,
-            };
+                { DevicePlatform.iOS, new[] { ".txt" } },
+                { DevicePlatform.Android, new[] { ".txt" } },
+                { DevicePlatform.WinUI, new[] { ".txt" } },
+                { DevicePlatform.Tizen, new[] { ".txt" } },
+                { DevicePlatform.macOS, new[] { ".txt" } },
+            });
 
-            var result = await PickAndShow(options);
-            return result;
-        }
-
-        private async Task<FileResult> PickAndShow(PickOptions options)
+        PickOptions options = new()
         {
-            try
+            PickerTitle = "Выберите файл с расширением txt",
+            FileTypes = customFileType,
+        };
+
+        var result = await PickAndShow(options);
+        return result;
+    }
+
+    private async Task<FileResult> PickAndShow(PickOptions options)
+    {
+        try
+        {
+            string pattern = @"[^|][|]\d+";
+            var result = await FilePicker.Default.PickAsync(options);
+            if (result != null)
             {
-                string pattern = @"[^|][|]\d+";
-                var result = await FilePicker.Default.PickAsync(options);
-                if (result != null)
+                StreamReader f = new StreamReader(result.FullPath);
+                string first_line = f.ReadLine();
+                f.Close();
+                if (result.FileName.EndsWith("txt", StringComparison.OrdinalIgnoreCase) && Regex.IsMatch(first_line, pattern, RegexOptions.IgnoreCase))
                 {
-                    StreamReader f = new StreamReader(result.FullPath);
-                    string first_line = f.ReadLine();
-                    f.Close();
-                    if (result.FileName.EndsWith("txt", StringComparison.OrdinalIgnoreCase) && Regex.IsMatch(first_line, pattern, RegexOptions.IgnoreCase))
-                    {
-                        FirstLine= first_line;
-                        return result;
-                    }
-                    else
-                    {
-                        FirstLine = "first_line";
-                    }
+                    FirstLine= first_line;
+                    return result;
                 }
                 else
                 {
                     FirstLine = "first_line";
                 }
             }
-            catch (Exception ex)
+            else
             {
-                //await MainPage.DisplayError(ex.Message);
+                FirstLine = "first_line";
             }
-
-            return null;
         }
+        catch (Exception ex)
+        {
+            //await MainPage.DisplayError(ex.Message);
+        }
+
+        return null;
     }
-    
 }
+

@@ -23,10 +23,10 @@
         ContentTemplate="{DataTemplate local:BitEncryptionInterface}"
         Route="BitEncryptionInterface"/>
         </Tab>
-        <Tab Title="Виженер-шифрование">
+        <Tab Title="Алгоритм Евклида">
             <ShellContent 
-                ContentTemplate="{DataTemplate local:VigenereEncryptionInterface}"
-                Route="VigenereEncryptionInterface"/>
+                ContentTemplate="{DataTemplate local:EuclideanAlgorithmInterface}"
+                Route="EuclideanAlgorithmInterface"/>
         </Tab>
 
 
