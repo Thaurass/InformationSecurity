@@ -12,34 +12,29 @@ public partial class EuclideanAlgorithmInterface : ContentPage
         _dictonaries.EngProbilities();
     }
 
+    EuclideanAlgorithmLogic _euclideanAlgorithmLogic = new();
     CaesarCipherLogic _caesarCipherLogic = new();
     Dictonaries _dictonaries = new();
 
 
-
-
     public void Encrypt_Click(object sender, EventArgs args)
-    {
-        EncryptText.Text = string.Empty;
-        if (Check_number(Step) && Check_empty(UnencryptText))
-        {
-            EncryptText.Text = _caesarCipherLogic.Encrypt_func(UnencryptText.Text, Step.Text);
-        }
-    }
-    public void Decrypt_Click(object sender, EventArgs args)
     {
         Data.Text = string.Empty;
 
-        if (Check_empty(UnencryptText))
+        bool b1 = Check_number(Method.Text, 1, 3);
+        bool b2 = Check_number(FirstNum.Text, 1, int.MaxValue);
+        bool b3 = Check_number(SecondNum.Text, 1, int.MaxValue);
+
+        if (b1 && b2 && b3)
         {
-            Data.Text = _caesarCipherLogic.DecryptMessage(UnencryptText.Text);
+            Data.Text = _euclideanAlgorithmLogic.Encrypt_func_Euclidean_Algorithm_4(FirstNum.Text, SecondNum.Text, Method.Text);
         }
     }
 
 
     private async void SaveButton_Click(object sender, EventArgs args)
     {
-        await _caesarCipherLogic.SaveCipherData(UnencryptText.Text + "|" + Step.Text);
+        await _caesarCipherLogic.SaveCipherData(FirstNum.Text + "|" + SecondNum.Text);
         if (_caesarCipherLogic.IsSaveSuccessful)
         {
             await Toast.Make($"File is saved").Show();
@@ -55,8 +50,8 @@ public partial class EuclideanAlgorithmInterface : ContentPage
         await _caesarCipherLogic.GetCipherData();
         if (_caesarCipherLogic.FileData[0] != "first_line")
         {
-            UnencryptText.Text = _caesarCipherLogic.FileData[0];
-            Step.Text = _caesarCipherLogic.FileData[1];
+            FirstNum.Text = _caesarCipherLogic.FileData[0];
+            SecondNum.Text = _caesarCipherLogic.FileData[1];
         }
 
     }
@@ -69,13 +64,13 @@ public partial class EuclideanAlgorithmInterface : ContentPage
 
     }
 
-    public bool Check_number(Entry sender)
+    private bool Check_number(string sender, int lover, int up)
     {
         bool err = false;
         int step;
-        if (int.TryParse(sender.Text, out step))
+        if (int.TryParse(sender, out step))
         {
-            if (step > 0 && step <= 50) { err = true; }
+            if (step >= lover && step <= up) { err = true; }
         }
         return err;
 
@@ -83,9 +78,9 @@ public partial class EuclideanAlgorithmInterface : ContentPage
 
     private void ClearEntry_Click(object sender, EventArgs args)
     {
-        EncryptText.Text = string.Empty;
-        UnencryptText.Text = string.Empty;
-        Step.Text = string.Empty;
+        FirstNum.Text = string.Empty;
+        SecondNum.Text = string.Empty;
+        Method.Text = string.Empty;
         Data.Text = string.Empty;
     }
 }
