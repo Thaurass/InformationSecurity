@@ -62,6 +62,45 @@ public class EuclideanAlgorithmLogic
         return Data;
     }
 
+    public string Time_Click()
+    {
+        string Data;
+
+        Stopwatch stopwatch = new Stopwatch();
+        int count = 0;
+        int a = 0; int b = 0;
+        Data = String.Empty;
+        while (count != 5)
+        {
+            Random r = new Random();
+
+            a = r.Next((int)Math.Pow(10, count), (int)Math.Pow(10, count + 1) - 1);
+            b = r.Next((int)Math.Pow(10, count), (int)Math.Pow(10, count + 1) - 1);
+
+            if (EuclideanAlgorithm(a, b) == 1)
+            {
+                count++;
+                stopwatch.Start();
+                Data += ExtendedEuclideanAlgorithm_3(a, b).ToString() + " otvet";
+                stopwatch.Stop();
+                Data += Environment.NewLine;
+                Data += "a = " + a + "  ---  " + " b = " + b;
+                System.Threading.Thread.Sleep(1);
+                Data += Environment.NewLine;
+                TimeSpan ts = stopwatch.Elapsed;
+                string elapsedTime = String.Format("{0:f8}",
+                ts.TotalMilliseconds);
+                Data += elapsedTime;
+                Data += Environment.NewLine;
+
+            }
+
+
+        }
+
+        return Data;
+    }
+
     static int EuclideanAlgorithm(int m, int n)
     {
         int temp;

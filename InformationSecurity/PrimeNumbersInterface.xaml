@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InformationSecurity.PrimeNumbersInterface">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<Border Grid.Column = "1" Background="#1f3d7a"/>
+<Border Grid.Column = "2" Background="#1f3d7a"/>-->
+            <!--<Border Grid.Column = "2" Background="#152951"/>-->
+
+            <VerticalStackLayout 
+                Padding="5"
+                VerticalOptions="Center"
+                Grid.Column="0">
+
+                <Label
+                    Margin="14"
+                    Text="Проверяемое число:"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="14"
+                    HorizontalOptions="Center" />
+                <Entry
+                    Margin="2"
+                    x:Name="InputText"
+                    Placeholder="Введите нечетное натуральное число"
+                    MaxLength="1000"/>
+
+                <Button
+                    Grid.Column="0"
+                    Margin="2"
+                    x:Name="encrypt"
+                    Text="Зашифровать"
+                    Clicked="Encrypt_Click"/>
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout 
+                Padding="5"
+                VerticalOptions="Center"
+                Grid.Column="1">
+
+                <Label
+                    Margin="14"
+                    Text="Число повторений:"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="14"
+                    HorizontalOptions="Center" />
+                <Entry
+                    Margin="2"
+                    x:Name="Step"
+                    Placeholder="Введите положительное число"
+                    MaxLength="1000"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Grid.Column="0"
+                        Margin="2"
+                        x:Name="save"
+                        Text="Сохранить"
+                        Clicked="SaveButton_Click"/>
+                    <Button
+                        Grid.Column="1"
+                        Margin="2"
+                        x:Name="load"
+                        Text="Загрузить"
+                        Clicked="LoadFile"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <!--<ColumnDefinition Width="6*"/>-->
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout 
+                Padding="20"
+                VerticalOptions="Center"
+                Grid.Column="0">
+
+                <Label
+                    Text="Результат:"
+                    Margin="20"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="14"
+                    HorizontalOptions="Center" />
+                <Editor
+                    Margin="2"
+                    x:Name="Data"
+                    IsReadOnly="True"
+                    HeightRequest="300"/>
+            </VerticalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

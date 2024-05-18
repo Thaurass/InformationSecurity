@@ -24,7 +24,10 @@ public partial class EuclideanAlgorithmInterface : ContentPage
         bool b1 = Check_number(Method.Text, 1, 3);
         bool b2 = Check_number(FirstNum.Text, 1, int.MaxValue);
         bool b3 = Check_number(SecondNum.Text, 1, int.MaxValue);
-
+        if (FirstNum.Text == null && SecondNum.Text == null) 
+        {
+            Data.Text = _euclideanAlgorithmLogic.Time_Click();
+        }
         if (b1 && b2 && b3)
         {
             Data.Text = _euclideanAlgorithmLogic.Encrypt_func_Euclidean_Algorithm_4(FirstNum.Text, SecondNum.Text, Method.Text);

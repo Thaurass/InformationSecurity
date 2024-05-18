@@ -78,6 +78,12 @@
 	  <MauiXaml Update="EuclideanAlgorithmInterface.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PrimeNumbersInterface.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PspGeneratorInterface.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="TrithemiusTableInterface.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

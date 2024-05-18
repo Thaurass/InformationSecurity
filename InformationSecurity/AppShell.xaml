@@ -20,15 +20,24 @@
         </Tab>
         <Tab Title="Побитовое шифрование">
             <ShellContent 
-        ContentTemplate="{DataTemplate local:BitEncryptionInterface}"
-        Route="BitEncryptionInterface"/>
+                ContentTemplate="{DataTemplate local:BitEncryptionInterface}"
+                Route="BitEncryptionInterface"/>
         </Tab>
         <Tab Title="Алгоритм Евклида">
             <ShellContent 
                 ContentTemplate="{DataTemplate local:EuclideanAlgorithmInterface}"
                 Route="EuclideanAlgorithmInterface"/>
         </Tab>
-
+        <Tab Title="ПСП Генератор">
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:PspGeneratorInterface}"
+                Route="PspGeneratorInterface"/>
+        </Tab>
+        <Tab Title="Простые числа">
+            <ShellContent 
+        ContentTemplate="{DataTemplate local:PrimeNumbersInterface}"
+        Route="PrimeNumbersInterface"/>
+        </Tab>
 
     </TabBar>
 
