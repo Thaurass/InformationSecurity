@@ -39,9 +39,8 @@ public class PspGeneratorLogic
             Data += s + " THIS SUM BITS";
             Data += Environment.NewLine;
 
-            bits = cycle_shift_l(bits, 1);
             bits = bits.Remove(bits.Length - 1);
-            bits += s;
+            bits = bits.Insert(0, s);
             Data += bits + " THIS NEW BITS" + " ITERATION " + j;
             Data += Environment.NewLine;
 

@@ -15,7 +15,7 @@ public partial class PspGeneratorInterface : ContentPage
 
     public void Encrypt_Click(object sender, EventArgs args)
     {
-        if (Check_number(Step.Text, 1, 100000) && Check_empty(Step))
+        if (Check_number(Step.Text, 1, 10000) && Check_empty(Step))
         {
             if (InputText.Text == "0" || (Check_Str(InputText.Text, "01") && InputText.Text.Length == 32))
             {
